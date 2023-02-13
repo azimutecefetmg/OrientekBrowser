@@ -1,0 +1,27 @@
+<ul *ngIf="eventos" id="event-list">
+    <li *ngFor="let evento of eventos">
+        <div class="card">
+            <div class="card-content">
+                <div class="card-title">
+                    <a class="black-text" routerLink="../detalhe-evento/{{evento.idEvento}}">
+                        <span>{{evento.nomeEvento}}</span>
+                    </a>
+                </div>
+                <div>
+                    <i class="material-icons left">access_time</i>{{evento.dataEvento.split('-').reverse().join('/')}}
+                </div>
+                <div>
+                    <i class="material-icons left">attach_money</i>{{evento.precoEvento > 0 ? 'R$ ' + evento.precoEvento.replace('.', ',') : 'Gratuito'}}
+                </div>
+                <span class="badge green accent-4 white-text" *ngIf="evento.pagoParticipacao">Pago<i
+                        class="material-icons right">check</i></span>
+                <button data-target="modal1" class="btn blue-grey darken-3 modal-trigger" (click)="selectEvento(evento)"
+                        id="enviarComprovante"
+                        *ngIf="!evento.pagoParticipacao && evento.precoEvento > 0 ">Enviar
+                    comprovante de pagamento
+                </button>
+            </div>
+        </div>
+    </li>
+</ul>
+<app-enviar-comprovante [evento]="selectedEvento"></app-enviar-comprovante>

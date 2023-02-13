@@ -1,0 +1,18 @@
+<app-navbar-orientista></app-navbar-orientista>
+<main>
+  <div class="row">
+    <aside class="white col l3 xl2 left hide-on-med-and-down">
+      <nav class="white black-text ">
+        <ul>
+          <li><a class="black-text disabled">Navegue</a></li>
+          <li><a class="active black-text" routerLinkActive="active" routerLink="./"><i class="material-icons left">home</i> Inicio</a></li>
+          <li><a class="black-text" routerLinkActive="active" routerLink="./busca-evento"><i class="material-icons left">search</i>Procurar um evento</a></li>
+          <li><a class="black-text" routerLink="./participacoes"><i class="material-icons left">event_note</i>Listar eventos</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <section class="col s12 m12 l8 xl9 offset-l3 offset-xl3">
+      <router-outlet></router-outlet>
+    </section>
+  </div>
+</main>

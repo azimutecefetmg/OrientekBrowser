@@ -1,0 +1,40 @@
+
+<main class="grey lighten-4">
+  <div class="ajuste">
+    <div align="center" class="panel">
+      <div class="container row">
+        <div class="card col s12 m6 l4 xl4 offset-xl4 offset-l4 offset-m3">
+          <div class="card-content">
+            <form #loginForm="ngForm"  (ngSubmit)="login()">
+              <div class="input-field">
+                <label for="foco">Email</label>
+                <input class="dados validate" [(ngModel)]="user.email" type="email" name="login"
+                       required
+                       id="foco"/>
+              </div>
+              <div class="input-field">
+                <label for="senha">Senha</label>
+                <input class="dados validate" type="password" [(ngModel)]="user.senha" name="senha" placeholder="senha"
+                       required
+                       id="senha"/>
+              </div>
+              <button class="btn blue-grey darken-4 submete" [disabled]="!loginForm.form.valid" type="submit" name="go">
+                Entrar <i class="material-icons right">check</i>
+              </button>
+              <a routerLink="../cadastro" class="btn blue-grey darken-4" type="button" >
+                Cadastrar<i class="material-icons right">exit_to_app</i>
+              </a>
+              <!-- TODO IMPLEMENTAR ESQUECI A SENHA-->
+              <div id="pergunta">Esqueceu a senha?</div>
+            </form>
+          </div>
+          <div class="card-action">
+            <a class="red-text waves-effect waves-light" onclick="window.history.back()" href="#">Voltar<i
+              class="material-icons right">close</i> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+

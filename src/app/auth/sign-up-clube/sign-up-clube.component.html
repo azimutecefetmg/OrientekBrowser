@@ -1,0 +1,105 @@
+<main class="container row">
+  <div class="card col s12 m8 offset-m2 z-depth-2">
+    <div class="card-content">
+        <a routerLink="../login">Voltar ao Login</a>
+      <form id="form-cadastro" (submit)="submit()" class="formulario">
+        <div class="input-field">
+          <label for="nomeClube">Nome do clube</label>
+          <input type="text" maxlength="250" id="nomeClube" name="nomeClube" required/>
+        </div>
+        <div class="input-field">
+          <label for="siglaClube">Sigla</label>
+          <input type="text" maxlength="4" id="siglaClube" name="siglaClube" required/>
+        </div>
+        <div class="input-field">
+          <label for="numeroClube">Número</label>
+          <input type="text" name="numeroClube" (input)="formatter.somenteNumeros($event)" id="numeroClube" pattern="[0-9]*"
+                 required/>
+        </div>
+        <div class="input-field">
+          <label for="cnpj">CNPJ</label>
+          <input type="text" id="cnpj" pattern="[0-9]{2}.[0-9]{3}.[0-9]{3}\/[0-9]{4}-[0-9]{2}" maxlength="18"
+                 required (input)="formatter.formataCNPJ($event)" name="cnpj"/>
+        </div>
+        <div class="input-field">
+          <label for="agencia">Agência</label>
+          <input type="text" name="agencia" id="agencia"/>
+        </div>
+        <div class="input-field">
+          <label for="conta">Conta</label>
+          <input type="text" name="conta" id="conta"/>
+        </div>
+        <div class="input-field">
+          <label for="nomeFederacao">Nome da Federação</label>
+          <input type="text" name="nomeFederacao" id="nomeFederacao"/>
+        </div>
+        <div class="input-field">
+          <label for="siglaFederacao">Sigla da Federação</label>
+          <input type="text" name="siglaFederacao" id="siglaFederacao"/>
+        </div>
+        <div class="input-field">
+          <label for="cep">CEP</label>
+          <input type="text" (input)="formatter.formataCep($event)" pattern="[0-9]{5}-[0-9]{3}" maxlength="9" required
+                 name="cep" id="cep"/>
+        </div>
+        <div class="input-field">
+          <select name="uf" autocomplete="on" title="selecione estado" id="estado" required>
+            <option *ngFor="let estado of estados" value="{{estado.ufEstado}}">{{estado.nomeEstado}}</option>
+          </select>
+          <label>Estado:</label>
+        </div>
+        <div class="input-field">
+          <select name="cidade" autocomplete="on" title="selecione cidade" id="cidade" required>
+            <option *ngFor="let cidade of cidades" value="{{cidade.idCidade}}">{{cidade.nomeCidade}}</option>
+          </select>
+          <label>Cidade:</label>
+        </div>
+        <div class="input-field">
+          <label for="bairro">Bairro</label>
+          <input type="text" name="bairro" id="bairro" required/>
+        </div>
+        <div class="input-field">
+          <label for="rua">Rua</label>
+          <input type="text" name="rua" id="rua"/>
+        </div>
+        <div class="input-field">
+          <label for="numeroEndereco">Número</label>
+          <input type="number" pattern="[0-9]*" (input)="formatter.somenteNumeros($event)" required name="numeroEndereco" id="numeroEndereco"/>
+        </div>
+        <div class="input-field">
+          <label for="complemento">Complemento</label>
+          <input type="text" name="complemento" id="complemento"/>
+        </div>
+        <div class="input-field">
+          <label for="tel1">Telefone para contato principal</label>
+          <input type="tel" name="tel1" id="tel1" (input)="formatter.formataTelefone($event)" maxlength="15"
+                 pattern="[\(][0-9]{2}[\)]\s[0-9]{4,5}-[0-9]{4}"
+                 required/>
+        </div>
+        <div class="input-field">
+          <label for="tel2">Telefone para contato secundário</label>
+          <input type="tel" name="tel2" id="tel2" (input)="formatter.formataTelefone($event)" maxlength="15"
+                 pattern="[\(][0-9]{2}[\)]\s[0-9]{4,5}-[0-9]{4}"
+                 required/>
+        </div>
+        <div class="input-field">
+          <label for="email">Email</label>
+          <input type="email" maxlength="250" name="email" id="email" required/>
+        </div>
+        <div class="input-field">
+          <label for="senhaum">Senha</label>
+          <input type="password" minlength="6" maxlength="12" name="senhaum" id="senhaum" required/>
+        </div>
+        <div class="input-field">
+          <label for="senhadois">Confirme a senha</label>
+          <input type="password" required minlength="6" maxlength="12" name="senhadois" id="senhadois"/>
+        </div>
+
+        <div id="loading" class="row">
+          <input id="go" name="go" type="submit" value="Cadastrar" class="btn-large blue-grey darken-4"/>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

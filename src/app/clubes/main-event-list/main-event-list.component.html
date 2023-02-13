@@ -1,0 +1,13 @@
+<div class="container">
+  <h4 class='center' *ngIf="eventos">Eventos :</h4>
+  <div class='collection' id='events-collection' *ngIf="eventos">
+    <a class="event black-text collection-item " *ngFor="let evento of eventos" routerLink="./detalhe-evento/{{evento.idEvento}}">
+      <b class="title"> {{evento.nomeEvento}} </b><br/>
+      <span>{{evento.dataEvento.split('-').reverse().join('/')}}</span><br/>
+      <b class="green-text">Offline <i class="material-icons">check</i> </b>
+    </a>
+  </div>
+  <h4 class='center' *ngIf="!eventos">Aqui aparecerão os seus eventos.<a routerLink="/cadastro-eventos">Publique um
+    aqui.</a>
+  </h4>
+</div>

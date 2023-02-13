@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="card col s12 m8 offset-m2 z-depth-2">
+    <div class="card-content">
+        <a routerLink="../login">Voltar ao Login</a>
+      <form id="form-cadastro" #signForm="ngForm" (submit)="submit()" class="formulario">
+        <div class="input-field">
+          <label for="nome">Nome completo *</label>
+          <input type="text" maxlength="250" id="nome" name="nome" required/>
+        </div>
+        <div class="input-field">
+          <label for="dataNascimento">Data de nascimento(dd/mm/aaaa) *</label>
+          <input type="text" id="dataNascimento" name="dataNascimento" maxlength="10"
+                 pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" (input)="formatter.formataData($event);" required/>
+        </div>
+
+        <div class="input-field">
+          <select name="sexo" autocomplete="on" title="Selecione" id="select-sexo">
+            <option value="" disabled selected>Sexo *</option>
+            <option value="H">Masculino</option>
+            <option value="D">Feminino</option>
+          </select>
+          <label>Sexo:</label>
+        </div>
+        <div class="input-field">
+          <label for="numCorredor">Número de corredor</label>
+          <input type="text" name="numCorredor" id="numCorredor" maxlength="5" pattern="[0-9]{1,5}"
+                 (input)="formatter.somenteNumeros($event)"
+                 required/>
+        </div>
+        <div class="input-field">
+          <label for="cpf">CPF</label>
+          <input type="text" name="cpf" id="cpf" (input)="formatter.formataCPF($event)" maxlength="14"
+                 pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}"
+                 required/>
+        </div>
+
+        <div class="input-field">
+          <label for="cep">CEP</label>
+          <input type="text" name="cep" id="cep" maxlength="9" pattern="[0-9]{5}-[0-9]{3}"
+                 (input)="formatter.formataCep($event)" required/>
+        </div>
+        <div class="input-field">
+          <select name="uf" (change)="buscaCidade()" autocomplete="on" title="Selecione" id="estado" required>
+            <option *ngFor="let estado of estados" value="{{estado.ufEstado}}">{{estado.nomeEstado}}</option>
+          </select>
+          <label>Estado:</label>
+        </div>
+        <div class="input-field">
+          <select name="cidade" autocomplete="on" title="Selecione" id="cidade" required>
+            <option *ngFor="let cidade of cidades" value="{{cidade.idCidade}}">{{cidade.nomeCidade}}</option>
+          </select>
+          <label>Cidade:</label>
+        </div>
+        <div class="input-field">
+          <label for="bairro">Bairro</label>
+          <input type="text" name="bairro" id="bairro" required/>
+        </div>
+        <div class="input-field">
+          <label for="rua">Rua</label>
+          <input type="text" name="rua" id="rua" required/>
+        </div>
+        <div class="input-field">
+          <label for="numeroEndereco">Número</label>
+          <input type="text" id="numeroEndereco" name="numeroEndereco" (input)="formatter.somenteNumeros($event)"
+                 pattern="[0-9]*"
+                 required/>
+        </div>
+        <div class="input-field">
+          <label for="complemento">Complemento</label>
+          <input type="text" id="complemento" name="complemento"/>
+        </div>
+        <div class="input-field">
+          <label for="tel1">Telefone para contato principal</label>
+          <input type="tel" id="tel1" name="tel1" maxlength="15" (input)="formatter.formataTelefone($event)"
+                 pattern="[\(][0-9]{2}[\)]\s[0-9]{4,5}-[0-9]{4}" required/>
+        </div>
+        <div class="input-field">
+          <label for="tel2">Telefone para contato secundario</label>
+          <input type="tel" name="tel2" id="tel2"
+                 (input)="formatter.formataTelefone($event)" maxlength="15" pattern="[\(][0-9]{2}[\)]\s[0-9]{4,5}-[0-9]{4}"
+                 required/>
+        </div>
+        <div class="input-field">
+          <select name="idClube" autocomplete="on" title="Selecione" id="idClube">
+            <option *ngFor="let clube of clubes" value="{{clube.idClube}}" disabled
+                    selected>{{clube.nomeClube}}</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label for="email">E-mail *</label>
+          <input type="email" required name="email" id="email"/>
+        </div>
+        <div class="input-field">
+          <label for="senhaum">Senha *</label>
+          <input type="password" required minlength="6" maxlength="12" name="senhaum" id="senhaum"/>
+        </div>
+        <div class="input-field">
+          <label for="senhadois">Confirme a senha</label>
+          <input type="password" minlength="6" maxlength="12" name="senhadois" id="senhadois" required/>
+        </div>
+        <button class="btn-large blue-grey darken-4" id="go" name="go" type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+</div>

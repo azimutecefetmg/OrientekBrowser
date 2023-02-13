@@ -1,0 +1,43 @@
+<h4 class="blue-text text-darken-4 center">Buscar eventos</h4>
+<nav>
+  <div class="nav-wrapper blue-grey lighten-4">
+    <form>
+      <div class="input-field">
+        <input id="search" placeholder="Pequise..." #searchInput name="search" class="form-control"
+               (input)="search(searchInput.value)" type="search">
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons">close</i>
+      </div>
+    </form>
+  </div>
+</nav>
+<section class="container" id="results-list">
+  <ul *ngIf="!loading" class="card-wrapper">
+    <li *ngFor="let result of results">
+      <a routerLink="../detalhe-evento/{{result.idEvento}}">
+        <div class="card hoverable">
+          <div class="card-content">
+            <div class="card-title"><h5>{{result.nomeEvento}}</h5></div>
+            {{result.idEvento}}
+            {{result.nomeRua}}
+          </div>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <div *ngIf="loading" class="preloader-wrapper big active">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div>
+      <div class="gap-patch">
+        <div class="circle"></div>
+      </div>
+      <div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,27 @@
+.modal-content.row {
+    margin-right: 0 !important;
+}
+
+.img-container {
+    padding: 1rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#event-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1.5rem;
+    grid-auto-flow: dense;
+}
+
+
+.badge {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    border-radius: 12px;
+    user-select: none;
+}

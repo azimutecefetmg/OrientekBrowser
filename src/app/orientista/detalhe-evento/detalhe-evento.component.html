@@ -1,0 +1,37 @@
+<div class="container" *ngIf="evento">
+    <h3>{{evento.nomeEvento}}</h3>
+    <div class="row">
+        <button class="btn green-text" (click)="inscricao()"
+                [ngClass]="{'btn-flat green lighten-4': evento.pagoParticipacao,'white': !evento.inscrito}">
+            Inscrição <i class="material-icons" *ngIf="evento.pagoParticipacao">check</i>
+        </button>
+        <h5>Inscrições até: {{evento.inscricaoEvento}}</h5>
+    </div>
+    <dl class="detalhes-evento">
+        <dt>
+            <i class="material-icons left">access_time</i>Datas:
+        </dt>
+        <dd class="description-subtitle"><label>Competição:</label> <span> {{evento.dataEvento}}</span></dd>
+        <dd class="description-subtitle"><label>Inscrição:</label> <span> {{evento.inscricaoEvento}}</span></dd>
+        <dd class="description-subtitle"><label>Pagamentos:</label> <span> {{evento.pagamentoEvento}}</span></dd>
+        <dt><i class="material-icons left">place</i>Local:</dt>
+        <dd class="description-subtitle"><span>{{evento.nomeCidade}}, {{evento.nomeEstado}}, {{evento.nomeBairro}}
+            , {{evento.nomeRua}}.</span></dd>
+        <dt><i class="material-icons left">attach_money</i>Valor:</dt>
+        <dd class="description-subtitle">
+            <label>Valor:</label><span>{{evento.precoEvento > 0 ? evento.precoEvento : 'Gratuito'}}</span></dd>
+        <dd class="description-subtitle" *ngIf="evento.precoEvento > 0">
+            <label>Conta:</label><span>{{evento.contaClube}}</span></dd>
+        <dd class="description-subtitle" *ngIf="evento.precoEvento > 0">
+            <label>Agencia:</label><span>{{evento.agenciaClube}}</span></dd>
+    </dl>
+    <button data-target="modal1" class="btn blue-grey darken-4 modal-trigger"
+            *ngIf="evento.precoEvento > 0 && evento.pagoParticipacao == 0">Enviar
+        Comprovante<i
+                class="material-icons right">send</i></button>
+    <button data-target="modal1" class="btn blue-grey darken-4 modal-trigger"
+            *ngIf="evento.precoEvento > 0 && evento.pagoParticipacao > 0">Alterar
+        comprovante<i class="material-icons right">edit</i>
+    </button>
+</div>
+<app-enviar-comprovante [evento]="evento"></app-enviar-comprovante>

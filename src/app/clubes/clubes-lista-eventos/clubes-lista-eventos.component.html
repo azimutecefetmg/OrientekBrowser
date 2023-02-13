@@ -1,0 +1,16 @@
+<section class="container">
+  <div class="row">
+    <a *ngFor="let evento of eventos" routerLink="../detalhe-evento/{{evento.idEvento}}">
+      <div class="card hoverable col s12 m6 xl4">
+        <div class="card-content">
+          <h4 class="card-title black-text">{{evento.nomeEvento}}</h4>
+        </div>
+        <div class="collection">
+          <div class="collection-item">
+            <span class="black-text">{{evento.participacoes}} Inscrições</span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>

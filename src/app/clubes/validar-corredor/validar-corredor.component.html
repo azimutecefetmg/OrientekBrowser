@@ -1,0 +1,22 @@
+<section id="detalhes" *ngIf="participacao && _corredor" [ngClass]="{'active': participacao && corredor}">
+  <div class="collection-subheader">
+    Dados: <i class="material-icons right">keyboard_arrow_up</i>
+  </div>
+  <div id="dados-corredor">
+    <h5>{{_corredor.nomeCorredor}}</h5>
+  </div>
+  <div class="comprovante row">
+    <figure>
+      <figcaption>Comprovante:</figcaption>
+      <img class="col right s12 materialboxed" (load)="initMaterialbox()"
+           id="comprovante-expande"
+           src="{{ participacao.comprovante ? defaultHost + '/api/corredor/'+ participacao.comprovante : ''}}"
+           alt="comprovante">
+    </figure>
+    <!--TODO Adicionar o método para aprovar inscrição -->
+    <button class="btn blue-grey darken-3" *ngIf="participacao.pagoParticipacao =='0'" (click)="validar()">Aprovar
+      inscrição<i class="material-icons right">done_all</i></button>
+    <span class="badge" *ngIf="participacao.pagoParticipacao">APROVADO</span>
+  </div>
+</section>
+

@@ -1,0 +1,25 @@
+<div id="modal1" class="modal">
+  <div class="modal-content row">
+    <h5 class="col s12 center">Enviar foto de comprovante</h5>
+    <form #fileForm="ngForm" (ngSubmit)="sendFile()" enctype="multipart/form-data" class="col s12 m6">
+      <fieldset class="file-field input-field">
+        <div class="btn">
+          <span>File</span>
+          <input type="file" name="file" id="file-input" accept="image/*" (change)="showFile($event)"
+                 required="">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </fieldset>
+      <button class="btn blue-grey darken-3" [disabled]="!fileForm.form.valid" type="submit">Enviar</button>
+    </form>
+    <div class="col s12 m6 img-container">
+      <img style="object-fit: contain;" class="responsive-img "
+           src="{{evento.comprovante? defaultHost+'/api/corredor/'+evento.comprovante: ''}}" alt="previzualização"
+           id="output"/>
+    </div>
+  </div>
+</div>
+<!--TODO terminar o pagamento dos eventos (enviar comprovante)-->
+<!--TODO adicionar loader durante o upload de arquivo-->

@@ -1,0 +1,41 @@
+<div class="navbar-fixed">
+  <nav class="amber darken-3 ">
+    <div class="nav-wrapper container ">
+      <a routerLink="/main" class="brand-logo"><b>ORIEN<span class="blue-grey-text text-darken-4">TEK</span></b></a>
+      <a data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li class=""><a><i class="material-icons left">book</i> Manuais</a></li>
+        <li><a class="dropdown-trigger" data-target="dropdown-conta"><i
+          class="material-icons amber darken-1 left"
+          style="padding-left: 14px;padding-right: 14px;clip-path: circle(18px at 50% 50%);">person</i><span *ngIf="user" class="username-wrapper">{{user.nomeClube}}<span *ngIf="!user">Bem vindo</span></span>
+          <i
+            class="material-icons right">arrow_drop_down</i></a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<ul class="sidenav" id="mobile-demo">
+  <li><a class="subheader">Navegue</a></li>
+  <li><a class="black-text" href="lista_evento.php"><i class="material-icons left">attach_money</i>Financeiro</a></li>
+  <li><a class="black-text" routerLink="/cadastro-eventos"><i class="material-icons left">add</i>Adicionar evento</a>
+  </li>
+  <li><a href="lista_evento_gerencia.php" class="black-text"><i class="material-icons left">pie_chart</i>Gerenciar
+    eventos</a></li>
+  <li><a href="valida_corredor.php" class="black-text"><i class="material-icons left">people</i>Corredores</a></li>
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li class=""><a><i class="material-icons left">book</i>Manuais</a>
+  <li>
+    <div class="divider"></div>
+  </li>
+  <li><a class="subheader">Conta </a></li>
+  <li><a class="black-text"><i class="material-icons left">person</i>Perfil</a></li>
+  <li><a href="../controls/clubes/logout.php" class="black-text"><i
+    class="material-icons left">exit_to_app</i>Sair</a></li>
+</ul>
+<ul id="dropdown-conta" class="dropdown-content">
+  <li><a class="black-text"><i class="material-icons left">person</i>Perfil</a></li>
+  <li><a (click)="logout()" class="black-text"><i
+    class="material-icons left">exit_to_app</i>Sair</a></li>
+</ul>

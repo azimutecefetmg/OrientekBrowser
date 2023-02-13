@@ -1,0 +1,28 @@
+<div class="row">
+  <section class="container col s12 m6" *ngIf="evento">
+  <h4>{{evento.nomeEvento}}</h4>
+  <button class="right btn blue-grey darken-3">Gerenciar Evento</button>
+  <dl>
+    <dt><i class="material-icons left">access_time</i>Hora:</dt>
+    <dd>{{ evento.horarioEvento }}</dd>
+    <dt><i class="material-icons left">date_range</i>Data:</dt>
+    <dd>{{ evento.dataEvento.split('-').reverse().join('/') }}</dd>
+  </dl>
+  <section *ngIf="participacoes!=null">
+    <h5>Inscrições ({{participacoes.length}})</h5>
+    <div class="collection" id="participacoes">
+      <a class="waves-effect waves-light modal-trigger collection-item" data-target="modal-participacao"
+         (click)="select(corredor(participacao), participacao)"
+         *ngFor="let participacao of participacoes">
+        <h6 class="black-text left">{{ corredor(participacao).nomeCorredor }}</h6><b
+        *ngIf="pago(participacao)" class="right green-text">PAGO</b> <a
+        class="btn right blue-grey darken-3"
+        *ngIf=" !pago(participacao)">Validar</a><br>
+      </a>
+    </div>
+  </section>
+</section>
+  <app-validar-corredor class="col s12 m6" *ngIf="selectedCorredor" [corredor]="selectedCorredor"
+                        [participacao]="selectedParticipacao"></app-validar-corredor>
+</div>
+<app-loading-panel *ngIf="!evento"></app-loading-panel>
